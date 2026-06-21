@@ -1,3 +1,4 @@
+# Sprint_4
 # qa_python
 
 Приложение `BooksCollector` позволяет устанавливать жанр книг и добавлять их в избранное.
@@ -10,47 +11,72 @@
 pytest -v tests.py 
 ```
 
-## Описание тестов
+## Реализованные тесты
+### 1. Тесты для метода `add_new_book` 
 
-### `add_new_book` — добавление книги
+| № | Название теста | Описание |
+|---|----------------|----------|
+| 1 | `test_add_new_book_success` | Проверяет успешное добавление новой книги в коллекцию |
+| 2 | `test_add_new_book_name_max_length` | Проверяет добавление книги с названием из 40 символов (максимальная допустимая длина) |
+| 3 | `test_add_new_book_name_too_long` | Проверяет, что книга с названием длиннее 40 символов не добавляется |
+| 4 | `test_add_new_book_empty_name` | Проверяет, что книга с пустым названием не добавляется |
+| 5 | `test_add_new_book_duplicate` | Проверяет, что дубликат книги не добавляется в коллекцию |
 
-- `test_add_new_book_add_one_book` —  добавляется книга в словарь
-- `test_add_new_book_genre_is_empty` —  добавляется книга с пустым жанром
-- `test_add_new_book_not_added` — книга с именем длиннее 40 символов или пустым именем не добавляется
-- `test_add_new_book_add_two_books` — успешно добавляются две разные книги
-- `test_add_new_book_add_duplicate_book` — дубликат книги не добавляется повторно
+### 2. Тесты для методов `set_book_genre` и `get_book_genre` 
 
-### `set_book_genre` — установка жанра
+| № | Название теста | Описание |
+|---|----------------|----------|
+| 6 | `test_set_book_genre_valid_genre` | **Параметризованный тест**: проверяет установку всех допустимых жанров |
+| 7 | `test_set_book_genre_invalid_genre` | **Параметризованный тест**: проверяет, что недопустимый жанр не устанавливается |
+| 8 | `test_set_book_genre_nonexistent_book` | Проверяет, что жанр не устанавливается для несуществующей книги |
+| 9 | `test_get_book_genre_empty_genre` | Проверяет получение жанра у книги без установленного жанра |
+| 10 | `test_get_book_genre_nonexistent_book` | Проверяет получение жанра несуществующей книги |
 
-- `test_set_book_genre_add_genre_book` — книге успешно присваивается жанр
-- `test_set_book_genre_not_set` — несуществующий жанр не перезаписывает текущий
+### 3. Тесты для метода `get_books_with_specific_genre` 
 
-### `get_book_genre` — получение жанра книги
+| № | Название теста | Описание |
+|---|----------------|----------|
+| 11 | `test_get_books_with_specific_genre` | **Параметризованный тест**: проверяет получение списка книг по определенному жанру |
+| 12 | `test_get_books_with_specific_genre_no_books` | Проверяет получение пустого списка при отсутствии книг в коллекции |
+| 13 | `test_get_books_with_specific_genre_invalid_genre` | Проверяет получение списка для невалидного жанра |
 
-- `test_get_book_genre_existing_book_returns_genre` —  после добавления книги, возвращает правильный жанр
-- `test_get_book_genre_affter_adding_book_list_not_empty` — после добавления книги, у книги поле жанра не пустое
+### 4. Тесты для метода `get_books_genre` 
 
-### `get_books_with_specific_genre` — книги по жанру
+| № | Название теста | Описание |
+|---|----------------|----------|
+| 14 | `test_get_books_genre` | Проверяет получение полного словаря книг с жанрами |
+| 15 | `test_get_books_genre_empty` | Проверяет получение пустого словаря при отсутствии книг |
 
-- `test_get_books_with_specific_genre_expecting_genge_returns_books` — возвращается список книг нужного жанра
-- `test_get_books_with_specific_genre_returns_empty_list` — несуществующий жанр возвращает пустой список
+### 5. Тесты для метода `get_books_for_children` 
 
-### `get_books_for_children` — книги для детей
+| № | Название теста | Описание |
+|---|----------------|----------|
+| 16 | `test_get_books_for_children_success` | Проверяет получение списка книг, подходящих для детей |
+| 17 | `test_get_books_for_children_excludes_age_rating` | Проверяет, что книги с возрастным рейтингом исключаются из списка |
+| 18 | `test_get_books_for_children_by_genre` | **Параметризованный тест**: проверяет фильтрацию книг для детей по всем жанрам |
+| 19 | `test_get_books_for_children_empty_genre` | Проверяет, что книги без жанра не попадают в список для детей |
+| 20 | `test_get_books_for_children_no_books` | Проверяет получение пустого списка при отсутствии книг |
 
-- `test_get_books_for_children_without_age_rating_returned` — книги без возрастного рейтинга попадают в список
-- `test_get_books_for_children_with_age_rating_not_returned` — книги с возрастным рейтингом не попадают в список
+### 6. Тесты для методов работы с избранным 
 
-### `add_book_in_favorites` — добавление в избранное
+| № | Название теста | Описание |
+|---|----------------|----------|
+| 21 | `test_add_book_in_favorites_success` | Проверяет успешное добавление книги в избранное |
+| 22 | `test_add_book_in_favorites_duplicate` | Проверяет, что дубликат не добавляется в избранное |
+| 23 | `test_add_book_in_favorites_nonexistent_book` | Проверяет, что несуществующая книга не добавляется в избранное |
+| 24 | `test_add_book_in_favorites_book_without_genre` | Проверяет добавление в избранное книги без установленного жанра |
+| 25 | `test_delete_book_from_favorites_success` | Проверяет успешное удаление книги из избранного |
+| 26 | `test_delete_book_from_favorites_not_in_favorites` | Проверяет удаление книги, которой нет в избранном |
+| 27 | `test_delete_book_from_favorites_nonexistent_book` | Проверяет удаление несуществующей книги из избранного |
+| 28 | `test_get_list_of_favorites_books_empty` | Проверяет получение пустого списка избранных книг |
+| 29 | `test_get_list_of_favorites_books_multiple` | Проверяет получение списка с несколькими книгами в избранном |
 
-- `test_dd_book_in_favorites_book_not_from_dick_not_added` — книга не из словаря не добавляется в избранное
-- `test_dd_book_in_favorites_book_from_dick_added` — книга из словаря успешно добавляется в избранное
-- `test_add_book_in_favorites_duplicate_book_added_once` — дубликат в избранное не добавляется
+### 7. Комплексные тесты 
 
-### `delete_book_from_favorites` — удаление из избранного
+| № | Название теста | Описание |
+|---|----------------|----------|
+| 30 | `test_complete_workflow` | Проверяет полный рабочий процесс с использованием всех методов класса |
+| 31 | `test_add_book_without_genre_and_add_to_favorites` | Проверяет добавление книги без жанра в избранное |
+| 32 | `test_set_genre_after_adding_to_favorites` | Проверяет установку жанра после добавления книги в избранное |
+| 33 | `test_delete_book_from_favorites_after_genre_change` | Проверяет удаление из избранного после изменения жанра |
 
-- `test_delete_book_from_favoritesbook_removed` — книга успешно удаляется из избранного
-
-### `get_list_of_favorites_books` — список избранного
-
-- `test_get_list_of_favorites_books_returns_only_added_books` — список содержит только добавленные книги
-# Sprint_4
