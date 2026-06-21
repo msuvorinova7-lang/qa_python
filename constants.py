@@ -1,61 +1,52 @@
-# Доступные жанры
+# Константы для жанров книг
 GENRE_FANTASY = 'Фантастика'
 GENRE_HORROR = 'Ужасы'
 GENRE_DETECTIVE = 'Детективы'
-GENRE_CARTOON = 'Мультфильмы'
 GENRE_COMEDY = 'Комедии'
+GENRE_CARTOONS = 'Мультфильмы'
 
-# Жанры с возрастным рейтингом
-GENRE_AGE_RATING = [GENRE_HORROR, GENRE_DETECTIVE]
-
-# Все доступные жанры (список для параметризации)
-ALL_GENRES = [GENRE_FANTASY, GENRE_HORROR, GENRE_DETECTIVE, GENRE_CARTOON, GENRE_COMEDY]
-
-# Тестовые данные для книг
-TEST_BOOKS = {
-    'book1': 'Гарри Поттер',
-    'book2': 'Война и мир',
-    'book3': 'Мастер и Маргарита',
-    'book4': '1984',
-    'book5': 'Маленький принц',
-}
-
-# Тестовые данные для проверки книг с определенным жанром
-# Формат: (жанр, ожидаемый_список_книг)
-SPECIFIC_GENRE_TEST_DATA = [
-    (GENRE_FANTASY, ['Книга1', 'Книга3']),
-    (GENRE_HORROR, ['Книга2']),
-    (GENRE_DETECTIVE, []),
-    (GENRE_CARTOON, []),
+# Допустимые жанры
+VALID_GENRES = [
+    GENRE_FANTASY,
+    GENRE_HORROR,
+    GENRE_DETECTIVE,
+    GENRE_COMEDY,
+    GENRE_CARTOONS
 ]
 
-# Тестовые данные для проверки книг для детей
-# Формат: (жанр, ожидается_в_детском_списке)
-BOOKS_FOR_CHILDREN_TEST_DATA = [
-    (GENRE_FANTASY, True),
-    (GENRE_CARTOON, True),
-    (GENRE_COMEDY, True),
-    (GENRE_HORROR, False),
-    (GENRE_DETECTIVE, False),
+# Жанры с возрастным рейтингом (не для детей)
+ADULT_GENRES = [
+    GENRE_HORROR,
+    GENRE_DETECTIVE
 ]
 
-# Тестовые данные для проверки установки жанров
-# Формат: (название_книги, жанр)
-BOOKS_WITH_GENRES = [
-    ('Книга1', GENRE_FANTASY),
-    ('Книга2', GENRE_HORROR),
-    ('Книга3', GENRE_DETECTIVE),
-    ('Книга4', GENRE_CARTOON),
-    ('Книга5', GENRE_COMEDY),
+# Жанры для детей
+CHILDREN_GENRES = [
+    GENRE_FANTASY,
+    GENRE_COMEDY,
+    GENRE_CARTOONS
 ]
 
-# Невалидные жанры для тестирования
-INVALID_GENRES = ['Роман', 'Поэзия', 'Драма', 'Триллер', 'Вестерн']
+# Константы для книг
+BOOK_NAME_HARRY_POTTER = 'Гарри Поттер'
+BOOK_NAME_LORD_OF_THE_RINGS = 'Властелин колец'
+BOOK_NAME_1984 = '1984'
+BOOK_NAME_MASTER_AND_MARGARITA = 'Мастер и Маргарита'
+BOOK_NAME_DRACULA = 'Дракула'
 
-# Длинные названия для тестирования
-MAX_LENGTH_NAME = 'А' * 40
-TOO_LONG_NAME = 'А' * 41
-EMPTY_NAME = ''
+# Константы для тестирования граничных значений
+MAX_BOOK_NAME_LENGTH = 40
+MIN_BOOK_NAME_LENGTH = 1
 
-# Тестовые книги для комплексных тестов
-COMPLEX_TEST_BOOKS = ['Книга1', 'Книга2', 'Книга3']
+# Константы для тестовых данных
+TEST_BOOK_NAMES = [
+    BOOK_NAME_HARRY_POTTER,
+    BOOK_NAME_LORD_OF_THE_RINGS,
+    BOOK_NAME_1984,
+    BOOK_NAME_MASTER_AND_MARGARITA,
+    BOOK_NAME_DRACULA
+]
+
+# Константы для параметризации
+BOOK_NAME_LENGTHS_VALID = [1, 20, 40]
+BOOK_NAME_LENGTHS_INVALID = [41, 50, 100]
